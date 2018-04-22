@@ -1,0 +1,82 @@
+<!-- Juan Aguirre-->
+
+<!DOCTYPE html><html lang='en' >
+<head>
+
+<link href="https://fonts.googleapis.com/css?family=Passion+One|VT323" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ body, html {
+  height: 100%;
+  width:100%;
+   box-shadow: 0 4px 20px 0;
+}
+
+body{
+   background-color:#006666;
+}
+
+html{
+  background-color: rgba(102,178,178 0.2); 
+}
+
+body {
+  width: 85%;
+  margin: 0 auto;
+  font-family: 'Passion One', cursive;
+  font-size: 42px;
+  color: #222;
+  letter-spacing: .12rem;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h3 {
+  margin-bottom: 1rem;
+  border-bottom: 5px solid #fbc034;
+}
+
+.price-box {
+  font-family: 'VT323', monospace;
+  background: #fbc034;
+  padding: 7rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+small {
+  margin-top: 10px;
+  font-size: 35%;
+}
+</style>
+</head>
+<body>
+<body>
+  <div class="container">
+    <h3>Bitcoin Price</h3>
+    <div class="price-box">
+      $<span id="price">10,569.096</span></div>
+    <small>Powered by <a href="https://www.coindesk.com/price/">Coindesk</a></small>
+  </div>
+</body>
+<script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+<script >const getPrice = () => {
+  let price = document.getElementById('price')
+  fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+  .then(response => response.json())
+  .then(data => {
+    // console.log(data)
+    price.innerHTML = data.bpi.USD.rate
+  });
+}
+
+getPrice()
+//# sourceURL=pen.js
+</script>
+</body></html>
